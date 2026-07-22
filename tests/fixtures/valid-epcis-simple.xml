@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+  xmlns:cbvmda="urn:epcglobal:cbv:mda"
+  xmlns:sbdh="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader"
+  schemaVersion="1.2" creationDate="2024-01-15T10:00:00.000Z">
+
+  <EPCISHeader>
+    <sbdh:StandardBusinessDocumentHeader>
+      <sbdh:HeaderVersion>1.0</sbdh:HeaderVersion>
+      <sbdh:Sender>
+        <sbdh:Identifier Authority="SGLN">urn:epc:id:sgln:0383745.00001.0</sbdh:Identifier>
+        <sbdh:ContactInformation>
+          <sbdh:Contact>PharmaCo Inc</sbdh:Contact>
+        </sbdh:ContactInformation>
+      </sbdh:Sender>
+      <sbdh:Receiver>
+        <sbdh:Identifier Authority="SGLN">urn:epc:id:sgln:0614141.00001.0</sbdh:Identifier>
+        <sbdh:ContactInformation>
+          <sbdh:Contact>DistributorCo LLC</sbdh:Contact>
+        </sbdh:ContactInformation>
+      </sbdh:Receiver>
+    </sbdh:StandardBusinessDocumentHeader>
+    <extension>
+      <EPCISMasterData>
+        <VocabularyList>
+          <Vocabulary type="urn:epcglobal:epcis:vtype:EPCClass">
+            <VocabularyElementList>
+              <VocabularyElement id="urn:epc:idpat:sgtin:0383745.038009.*">
+                <attribute id="urn:epcglobal:cbv:mda#descriptionShort">Aspirin 100mg Tablets</attribute>
+                <attribute id="urn:epcglobal:cbv:mda#gtin">00383745380099</attribute>
+                <attribute id="urn:epcglobal:cbv:mda#ndc">38374-538-00</attribute>
+              </VocabularyElement>
+            </VocabularyElementList>
+          </Vocabulary>
+        </VocabularyList>
+      </EPCISMasterData>
+    </extension>
+  </EPCISHeader>
+
+  <EPCISBody>
+    <EventList>
+      <!-- Commissioning Event: 3 units of Aspirin -->
+      <ObjectEvent>
+        <eventTime>2024-01-15T08:00:00.000Z</eventTime>
+        <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
+        <epcList>
+          <epc>urn:epc:id:sgtin:0383745.038009.100001</epc>
+          <epc>urn:epc:id:sgtin:0383745.038009.100002</epc>
+          <epc>urn:epc:id:sgtin:0383745.038009.100003</epc>
+        </epcList>
+        <action>ADD</action>
+        <bizStep>urn:epcglobal:cbv:bizstep:commissioning</bizStep>
+        <disposition>urn:epcglobal:cbv:disp:active</disposition>
+        <readPoint>
+          <id>urn:epc:id:sgln:0383745.00001.0</id>
+        </readPoint>
+        <bizLocation>
+          <id>urn:epc:id:sgln:0383745.00001.0</id>
+        </bizLocation>
+        <extension>
+          <ilmd>
+            <cbvmda:lotNumber>LOT-A2024-001</cbvmda:lotNumber>
+            <cbvmda:itemExpirationDate>2025-12-31</cbvmda:itemExpirationDate>
+          </ilmd>
+        </extension>
+      </ObjectEvent>
+
+      <!-- Aggregation Event: Pack 3 units into a case -->
+      <AggregationEvent>
+        <eventTime>2024-01-15T09:00:00.000Z</eventTime>
+        <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
+        <parentID>urn:epc:id:sgtin:0383745.038009.900001</parentID>
+        <childEPCs>
+          <epc>urn:epc:id:sgtin:0383745.038009.100001</epc>
+          <epc>urn:epc:id:sgtin:0383745.038009.100002</epc>
+          <epc>urn:epc:id:sgtin:0383745.038009.100003</epc>
+        </childEPCs>
+        <action>ADD</action>
+        <bizStep>urn:epcglobal:cbv:bizstep:packing</bizStep>
+        <disposition>urn:epcglobal:cbv:disp:container_closed</disposition>
+        <readPoint>
+          <id>urn:epc:id:sgln:0383745.00001.0</id>
+        </readPoint>
+      </AggregationEvent>
+
+      <!-- Shipping Event -->
+      <ObjectEvent>
+        <eventTime>2024-01-15T14:00:00.000Z</eventTime>
+        <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
+        <epcList>
+          <epc>urn:epc:id:sscc:0383745.0000000001</epc>
+        </epcList>
+        <action>OBSERVE</action>
+        <bizStep>urn:epcglobal:cbv:bizstep:shipping</bizStep>
+        <disposition>urn:epcglobal:cbv:disp:in_transit</disposition>
+        <readPoint>
+          <id>urn:epc:id:sgln:0383745.00001.0</id>
+        </readPoint>
+        <extension>
+          <sourceList>
+            <source type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:sgln:0383745.00001.0</source>
+          </sourceList>
+          <destinationList>
+            <destination type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:sgln:0614141.00001.0</destination>
+          </destinationList>
+        </extension>
+      </ObjectEvent>
+    </EventList>
+  </EPCISBody>
+</epcis:EPCISDocument>

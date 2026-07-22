@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+  xmlns:cbvmda="urn:epcglobal:cbv:mda"
+  schemaVersion="1.2" creationDate="2024-03-01T08:00:00.000Z">
+
+  <EPCISBody>
+    <EventList>
+      <!-- Commissioning without ILMD data (missing lot/expiration) -->
+      <ObjectEvent>
+        <eventTime>2024-03-01T08:00:00.000Z</eventTime>
+        <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
+        <epcList>
+          <epc>urn:epc:id:sgtin:0383745.038009.500001</epc>
+          <epc>urn:epc:id:sgtin:0383745.038009.500002</epc>
+        </epcList>
+        <action>ADD</action>
+        <bizStep>urn:epcglobal:cbv:bizstep:commissioning</bizStep>
+        <disposition>urn:epcglobal:cbv:disp:active</disposition>
+        <readPoint>
+          <id>urn:epc:id:sgln:0383745.00001.0</id>
+        </readPoint>
+        <bizLocation>
+          <id>urn:epc:id:sgln:0383745.00001.0</id>
+        </bizLocation>
+        <!-- ILMD intentionally missing - DSCSA violation -->
+      </ObjectEvent>
+
+      <!-- TransactionEvent: Shipping without required TI elements -->
+      <TransactionEvent>
+        <eventTime>2024-03-01T14:00:00.000Z</eventTime>
+        <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
+        <bizTransactionList>
+          <!-- Missing purchase order - only has desadv -->
+          <bizTransaction type="urn:epcglobal:cbv:btt:desadv">DESADV-2024-MISSING</bizTransaction>
+        </bizTransactionList>
+        <epcList>
+          <epc>urn:epc:id:sgtin:0383745.038009.500001</epc>
+        </epcList>
+        <action>ADD</action>
+        <bizStep>urn:epcglobal:cbv:bizstep:shipping</bizStep>
+        <disposition>urn:epcglobal:cbv:disp:in_transit</disposition>
+        <readPoint>
+          <id>urn:epc:id:sgln:0383745.00001.0</id>
+        </readPoint>
+        <extension>
+          <sourceList>
+            <source type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:sgln:0383745.00001.0</source>
+          </sourceList>
+          <destinationList>
+            <destination type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:sgln:0614141.00001.0</destination>
+          </destinationList>
+        </extension>
+      </TransactionEvent>
+
+      <!-- TransactionEvent: Change of ownership without TH (Transaction History) -->
+      <TransactionEvent>
+        <eventTime>2024-03-02T09:00:00.000Z</eventTime>
+        <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
+        <bizTransactionList>
+          <bizTransaction type="urn:epcglobal:cbv:btt:po">PO-2024-NOHISTORY</bizTransaction>
+        </bizTransactionList>
+        <epcList>
+          <epc>urn:epc:id:sgtin:0383745.038009.500002</epc>
+        </epcList>
+        <action>ADD</action>
+        <bizStep>urn:epcglobal:cbv:bizstep:receiving</bizStep>
+        <disposition>urn:epcglobal:cbv:disp:active</disposition>
+        <readPoint>
+          <id>urn:epc:id:sgln:0614141.00001.0</id>
+        </readPoint>
+        <extension>
+          <sourceList>
+            <source type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:sgln:0383745.00001.0</source>
+          </sourceList>
+          <destinationList>
+            <destination type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:sgln:0614141.00001.0</destination>
+          </destinationList>
+        </extension>
+        <!-- Missing TS indicator (recadv) - DSCSA violation -->
+        <!-- Missing TH reference - DSCSA violation -->
+      </TransactionEvent>
+
+      <!-- Recalled product without holding/destroying bizStep -->
+      <ObjectEvent>
+        <eventTime>2024-03-03T10:00:00.000Z</eventTime>
+        <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
+        <epcList>
+          <epc>urn:epc:id:sgtin:0383745.038009.500001</epc>
+        </epcList>
+        <action>OBSERVE</action>
+        <bizStep>urn:epcglobal:cbv:bizstep:inspecting</bizStep>
+        <disposition>urn:epcglobal:cbv:disp:recalled</disposition>
+        <readPoint>
+          <id>urn:epc:id:sgln:0614141.00001.0</id>
+        </readPoint>
+        <!-- DSCSA violation: recalled disposition without holding/destroying bizStep -->
+      </ObjectEvent>
+
+      <!-- Void shipping without required notification data -->
+      <ObjectEvent>
+        <eventTime>2024-03-04T08:00:00.000Z</eventTime>
+        <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
+        <epcList>
+          <epc>urn:epc:id:sgtin:0383745.038009.500002</epc>
+        </epcList>
+        <action>OBSERVE</action>
+        <bizStep>urn:epcglobal:cbv:bizstep:void_shipping</bizStep>
+        <!-- Missing disposition - DSCSA violation -->
+        <readPoint>
+          <id>urn:epc:id:sgln:0383745.00001.0</id>
+        </readPoint>
+        <!-- Missing source and destination - DSCSA violation -->
+      </ObjectEvent>
+
+      <!-- Event with missing required fields (no eventTimeZoneOffset) -->
+      <ObjectEvent>
+        <eventTime>2024-03-05T12:00:00.000Z</eventTime>
+        <!-- Missing eventTimeZoneOffset -->
+        <epcList>
+          <epc>urn:epc:id:sgtin:0383745.038009.500001</epc>
+        </epcList>
+        <action>DELETE</action>
+        <bizStep>urn:epcglobal:cbv:bizstep:destroying</bizStep>
+        <disposition>urn:epcglobal:cbv:disp:destroyed</disposition>
+        <readPoint>
+          <id>urn:epc:id:sgln:0614141.00001.0</id>
+        </readPoint>
+      </ObjectEvent>
+    </EventList>
+  </EPCISBody>
+</epcis:EPCISDocument>

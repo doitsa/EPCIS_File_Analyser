@@ -1,0 +1,18 @@
+{
+  "name": "epcis-file-analyzer",
+  "version": "1.0.0",
+  "description": "Browser-only EPCIS XML file analyzer for GS1/DSCSA compliance",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:property": "vitest run tests/property/",
+    "test:unit": "vitest run tests/unit/",
+    "test:integration": "vitest run tests/integration/"
+  },
+  "devDependencies": {
+    "fast-check": "3.22.0",
+    "jsdom": "25.0.1",
+    "vitest": "2.1.8"
+  }
+}

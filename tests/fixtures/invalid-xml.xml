@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1">
+  <EPCISBody>
+    <EventList>
+      <ObjectEvent>
+        <eventTime>2024-01-15T08:00:00.000Z</eventTime>
+        <epcList>
+          <epc>urn:epc:id:sgtin:0383745.038009.100001</epc>
+        <!-- Missing closing tag for epcList -->
+        <action>ADD</action>
+      </ObjectEvent>
+    </EventList>
+  <!-- Missing closing tag for EPCISBody -->
+</epcis:EPCISDocument>

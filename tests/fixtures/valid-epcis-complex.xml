@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+  xmlns:cbvmda="urn:epcglobal:cbv:mda"
+  xmlns:sbdh="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader"
+  schemaVersion="1.2" creationDate="2024-02-20T08:00:00.000Z">
+
+  <EPCISHeader>
+    <sbdh:StandardBusinessDocumentHeader>
+      <sbdh:HeaderVersion>1.0</sbdh:HeaderVersion>
+      <sbdh:Sender>
+        <sbdh:Identifier Authority="SGLN">urn:epc:id:sgln:0383745.00001.0</sbdh:Identifier>
+        <sbdh:ContactInformation>
+          <sbdh:Contact>PharmaCo Inc</sbdh:Contact>
+        </sbdh:ContactInformation>
+      </sbdh:Sender>
+      <sbdh:Receiver>
+        <sbdh:Identifier Authority="SGLN">urn:epc:id:sgln:0614141.00001.0</sbdh:Identifier>
+        <sbdh:ContactInformation>
+          <sbdh:Contact>DistributorCo LLC</sbdh:Contact>
+        </sbdh:ContactInformation>
+      </sbdh:Receiver>
+    </sbdh:StandardBusinessDocumentHeader>
+    <extension>
+      <EPCISMasterData>
+        <VocabularyList>
+          <Vocabulary type="urn:epcglobal:epcis:vtype:EPCClass">
+            <VocabularyElementList>
+              <VocabularyElement id="urn:epc:idpat:sgtin:0383745.038009.*">
+                <attribute id="urn:epcglobal:cbv:mda#descriptionShort">Aspirin 100mg Tablets</attribute>
+                <attribute id="urn:epcglobal:cbv:mda#gtin">00383745380099</attribute>
+                <attribute id="urn:epcglobal:cbv:mda#ndc">38374-538-00</attribute>
+              </VocabularyElement>
+              <VocabularyElement id="urn:epc:idpat:sgtin:0383745.052100.*">
+                <attribute id="urn:epcglobal:cbv:mda#descriptionShort">Ibuprofen 200mg Capsules</attribute>
+                <attribute id="urn:epcglobal:cbv:mda#gtin">00383745521001</attribute>
+                <attribute id="urn:epcglobal:cbv:mda#ndc">38374-552-10</attribute>
+              </VocabularyElement>
+            </VocabularyElementList>
+          </Vocabulary>
+        </VocabularyList>
+      </EPCISMasterData>
+    </extension>
+  </EPCISHeader>
+
+  <EPCISBody>
+    <EventList>
+      <!-- Commissioning Event: 5 units of Aspirin, Lot A -->
+      <ObjectEvent>
+        <eventTime>2024-02-20T08:00:00.000Z</eventTime>
+        <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
+        <epcList>
+          <epc>urn:epc:id:sgtin:0383745.038009.200001</epc>
+          <epc>urn:epc:id:sgtin:0383745.038009.200002</epc>
+          <epc>urn:epc:id:sgtin:0383745.038009.200003</epc>
+          <epc>urn:epc:id:sgtin:0383745.038009.200004</epc>
+          <epc>urn:epc:id:sgtin:0383745.038009.200005</epc>
+        </epcList>
+        <action>ADD</action>
+        <bizStep>urn:epcglobal:cbv:bizstep:commissioning</bizStep>
+        <disposition>urn:epcglobal:cbv:disp:active</disposition>
+        <readPoint>
+          <id>urn:epc:id:sgln:0383745.00001.0</id>
+        </readPoint>
+        <bizLocation>
+          <id>urn:epc:id:sgln:0383745.00001.0</id>
+        </bizLocation>
+        <extension>
+          <ilmd>
+            <cbvmda:lotNumber>LOT-B2024-010</cbvmda:lotNumber>
+            <cbvmda:itemExpirationDate>2026-06-30</cbvmda:itemExpirationDate>
+          </ilmd>
+        </extension>
+        <eventID>evt-001</eventID>
+      </ObjectEvent>
+
+      <!-- Commissioning Event: 3 units of Ibuprofen -->
+      <ObjectEvent>
+        <eventTime>2024-02-20T08:30:00.000Z</eventTime>
+        <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
+        <epcList>
+          <epc>urn:epc:id:sgtin:0383745.052100.300001</epc>
+          <epc>urn:epc:id:sgtin:0383745.052100.300002</epc>
+          <epc>urn:epc:id:sgtin:0383745.052100.300003</epc>
+        </epcList>
+        <action>ADD</action>
+        <bizStep>urn:epcglobal:cbv:bizstep:commissioning</bizStep>
+        <disposition>urn:epcglobal:cbv:disp:active</disposition>
+        <readPoint>
+          <id>urn:epc:id:sgln:0383745.00001.0</id>
+        </readPoint>
+        <bizLocation>
+          <id>urn:epc:id:sgln:0383745.00001.0</id>
+        </bizLocation>
+        <extension>
+          <ilmd>
+            <cbvmda:lotNumber>LOT-IBU-2024-005</cbvmda:lotNumber>
+            <cbvmda:itemExpirationDate>2026-03-15</cbvmda:itemExpirationDate>
+          </ilmd>
+        </extension>
+        <eventID>evt-002</eventID>
+      </ObjectEvent>
+
+      <!-- Aggregation: Pack 5 Aspirin units into case -->
+      <AggregationEvent>
+        <eventTime>2024-02-20T10:00:00.000Z</eventTime>
+        <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
+        <parentID>urn:epc:id:sgtin:0383745.038009.900010</parentID>
+        <childEPCs>
+          <epc>urn:epc:id:sgtin:0383745.038009.200001</epc>
+          <epc>urn:epc:id:sgtin:0383745.038009.200002</epc>
+          <epc>urn:epc:id:sgtin:0383745.038009.200003</epc>
+          <epc>urn:epc:id:sgtin:0383745.038009.200004</epc>
+          <epc>urn:epc:id:sgtin:0383745.038009.200005</epc>
+        </childEPCs>
+        <action>ADD</action>
+        <bizStep>urn:epcglobal:cbv:bizstep:packing</bizStep>
+        <disposition>urn:epcglobal:cbv:disp:container_closed</disposition>
+        <readPoint>
+          <id>urn:epc:id:sgln:0383745.00001.0</id>
+        </readPoint>
+        <eventID>evt-003</eventID>
+      </AggregationEvent>
+
+      <!-- Aggregation: Pack 3 Ibuprofen units into case -->
+      <AggregationEvent>
+        <eventTime>2024-02-20T10:15:00.000Z</eventTime>
+        <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
+        <parentID>urn:epc:id:sgtin:0383745.052100.900020</parentID>
+        <childEPCs>
+          <epc>urn:epc:id:sgtin:0383745.052100.300001</epc>
+          <epc>urn:epc:id:sgtin:0383745.052100.300002</epc>
+          <epc>urn:epc:id:sgtin:0383745.052100.300003</epc>
+        </childEPCs>
+        <action>ADD</action>
+        <bizStep>urn:epcglobal:cbv:bizstep:packing</bizStep>
+        <disposition>urn:epcglobal:cbv:disp:container_closed</disposition>
+        <readPoint>
+          <id>urn:epc:id:sgln:0383745.00001.0</id>
+        </readPoint>
+        <eventID>evt-004</eventID>
+      </AggregationEvent>
+
+      <!-- Aggregation: Pack 2 cases into SSCC pallet -->
+      <AggregationEvent>
+        <eventTime>2024-02-20T11:00:00.000Z</eventTime>
+        <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
+        <parentID>urn:epc:id:sscc:0383745.0000000100</parentID>
+        <childEPCs>
+          <epc>urn:epc:id:sgtin:0383745.038009.900010</epc>
+          <epc>urn:epc:id:sgtin:0383745.052100.900020</epc>
+        </childEPCs>
+        <action>ADD</action>
+        <bizStep>urn:epcglobal:cbv:bizstep:packing</bizStep>
+        <disposition>urn:epcglobal:cbv:disp:container_closed</disposition>
+        <readPoint>
+          <id>urn:epc:id:sgln:0383745.00001.0</id>
+        </readPoint>
+        <eventID>evt-005</eventID>
+      </AggregationEvent>
+
+      <!-- Shipping Event with SSCC -->
+      <ObjectEvent>
+        <eventTime>2024-02-20T14:00:00.000Z</eventTime>
+        <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
+        <epcList>
+          <epc>urn:epc:id:sscc:0383745.0000000100</epc>
+        </epcList>
+        <action>OBSERVE</action>
+        <bizStep>urn:epcglobal:cbv:bizstep:shipping</bizStep>
+        <disposition>urn:epcglobal:cbv:disp:in_transit</disposition>
+        <readPoint>
+          <id>urn:epc:id:sgln:0383745.00001.0</id>
+        </readPoint>
+        <extension>
+          <sourceList>
+            <source type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:sgln:0383745.00001.0</source>
+          </sourceList>
+          <destinationList>
+            <destination type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:sgln:0614141.00001.0</destination>
+          </destinationList>
+        </extension>
+        <eventID>evt-006</eventID>
+      </ObjectEvent>
+
+      <!-- Receiving Event -->
+      <ObjectEvent>
+        <eventTime>2024-02-21T09:00:00.000Z</eventTime>
+        <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
+        <epcList>
+          <epc>urn:epc:id:sscc:0383745.0000000100</epc>
+        </epcList>
+        <action>OBSERVE</action>
+        <bizStep>urn:epcglobal:cbv:bizstep:receiving</bizStep>
+        <disposition>urn:epcglobal:cbv:disp:active</disposition>
+        <readPoint>
+          <id>urn:epc:id:sgln:0614141.00001.0</id>
+        </readPoint>
+        <extension>
+          <sourceList>
+            <source type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:sgln:0383745.00001.0</source>
+          </sourceList>
+          <destinationList>
+            <destination type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:sgln:0614141.00001.0</destination>
+          </destinationList>
+        </extension>
+        <eventID>evt-007</eventID>
+      </ObjectEvent>
+
+      <!-- Transaction Event: Change of ownership -->
+      <TransactionEvent>
+        <eventTime>2024-02-21T10:00:00.000Z</eventTime>
+        <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
+        <bizTransactionList>
+          <bizTransaction type="urn:epcglobal:cbv:btt:po">PO-2024-98765</bizTransaction>
+          <bizTransaction type="urn:epcglobal:cbv:btt:desadv">DESADV-2024-11111</bizTransaction>
+        </bizTransactionList>
+        <epcList>
+          <epc>urn:epc:id:sscc:0383745.0000000100</epc>
+        </epcList>
+        <action>ADD</action>
+        <bizStep>urn:epcglobal:cbv:bizstep:shipping</bizStep>
+        <disposition>urn:epcglobal:cbv:disp:in_transit</disposition>
+        <readPoint>
+          <id>urn:epc:id:sgln:0383745.00001.0</id>
+        </readPoint>
+        <extension>
+          <sourceList>
+            <source type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:sgln:0383745.00001.0</source>
+          </sourceList>
+          <destinationList>
+            <destination type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:sgln:0614141.00001.0</destination>
+          </destinationList>
+          <quantityList>
+            <quantityElement>
+              <epcClass>urn:epc:idpat:sgtin:0383745.038009.*</epcClass>
+              <quantity>5</quantity>
+              <uom>EACH</uom>
+            </quantityElement>
+            <quantityElement>
+              <epcClass>urn:epc:idpat:sgtin:0383745.052100.*</epcClass>
+              <quantity>3</quantity>
+              <uom>EACH</uom>
+            </quantityElement>
+          </quantityList>
+        </extension>
+        <eventID>evt-008</eventID>
+      </TransactionEvent>
+
+      <!-- Transformation Event: Repackaging -->
+      <TransformationEvent>
+        <eventTime>2024-02-22T08:00:00.000Z</eventTime>
+        <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
+        <inputEPCList>
+          <epc>urn:epc:id:sgtin:0383745.038009.200001</epc>
+        </inputEPCList>
+        <outputEPCList>
+          <epc>urn:epc:id:sgtin:0383745.038009.400001</epc>
+        </outputEPCList>
+        <bizStep>urn:epcglobal:cbv:bizstep:transforming</bizStep>
+        <disposition>urn:epcglobal:cbv:disp:active</disposition>
+        <readPoint>
+          <id>urn:epc:id:sgln:0614141.00001.0</id>
+        </readPoint>
+        <extension>
+          <ilmd>
+            <cbvmda:lotNumber>LOT-B2024-010-R</cbvmda:lotNumber>
+            <cbvmda:itemExpirationDate>2026-06-30</cbvmda:itemExpirationDate>
+          </ilmd>
+        </extension>
+        <eventID>evt-009</eventID>
+      </TransformationEvent>
+    </EventList>
+  </EPCISBody>
+</epcis:EPCISDocument>
